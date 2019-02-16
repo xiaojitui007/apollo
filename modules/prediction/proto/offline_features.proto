@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+package apollo.prediction;
+
+import "modules/prediction/proto/feature.proto";
+
+message Features {
+  repeated Feature feature = 1;
+}
+
+message CNNFeatures {
+  optional uint32 dim0 = 1;
+  optional uint32 dim1 = 2;
+  optional uint32 dim2 = 3;
+  // The arrange of feature values are in the order of dim0, dim1, dim2
+  repeated double feature_value = 4;
+  optional int32 label = 5;
+}
+
+message DataForLearning {
+  // The task category of the data for learning
+  optional string category = 5;
+  // The info. needed for identifying a unique data point:
+  optional int32 id = 1;
+  optional double timestamp = 2;
+  // The features for learning algorithms:
+  repeated double features_for_learning = 3;
+  // The ground-truth labels:
+  repeated double labels = 4;
+}
+
+message ListDataForLearning {
+  repeated DataForLearning data_for_learning = 1;
+}
