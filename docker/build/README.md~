@@ -37,4 +37,3 @@ The best practice of a new installer would be:
 
    It would be awesome to work perfectly for different architectures such as X86
    and ARM.
-我就试试
